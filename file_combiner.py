@@ -11,7 +11,7 @@ class FileMergerApp:
     def __init__(self, root):
         self.root = root
         self.root.title("파일 합치기 프로그램")
-        self.root.geometry("700x500")
+        self.root.geometry("800x500")
         self.root.configure(bg="#f0f0f0")
         
         # 설정 파일 경로 - 사용자 홈 디렉토리의 특별한 폴더에 저장
@@ -88,20 +88,6 @@ class FileMergerApp:
         )
         set_path_button.pack(side=tk.LEFT, padx=5)
         
-        # 파일 합치기 버튼
-        merge_button = tk.Button(
-            button_frame, 
-            text="파일 합치기 💖", 
-            command=self.merge_files,
-            bg="#66cc99",
-            fg="white",
-            font=("맑은 고딕", 10, "bold"),
-            relief=tk.RIDGE,
-            borderwidth=3,
-            padx=10
-        )
-        merge_button.pack(side=tk.LEFT, padx=5)
-        
         # 전체 삭제 버튼
         delete_all_button = tk.Button(
             button_frame, 
@@ -115,6 +101,20 @@ class FileMergerApp:
             padx=10
         )
         delete_all_button.pack(side=tk.LEFT, padx=5)
+        
+        # 파일 합치기 버튼
+        merge_button = tk.Button(
+            button_frame, 
+            text="파일 합치기 💖", 
+            command=self.merge_files,
+            bg="#66cc99",
+            fg="white",
+            font=("맑은 고딕", 10, "bold"),
+            relief=tk.RIDGE,
+            borderwidth=3,
+            padx=10
+        )
+        merge_button.pack(side=tk.LEFT, padx=5)
         
         # 파일 목록 라벨
         files_label = tk.Label(
