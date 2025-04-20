@@ -1,3 +1,5 @@
+<img width="563" alt="file_combiner" src="https://github.com/user-attachments/assets/01e196da-c8fc-4a4f-b0f7-543ef27e56c2" />
+
 # File Combiner
 
 Merge multiple files easily with a friendly GUI interface 🤝
@@ -7,6 +9,7 @@ Merge multiple files easily with a friendly GUI interface 🤝
 - **Add Files** via file dialog or drag-and-drop 🖱️
 - **Refresh Files** to update the list 🔄
 - **Set Save Path** to choose output location 📁
+- **Delete All Files** to clear the entire list 🚮
 - **Remove Selected Files** when you change your mind ❌
 - **Merge All Files** into a single text document 💖
 - **Persistent Settings** saved between sessions 🔧
@@ -38,8 +41,9 @@ Merge multiple files easily with a friendly GUI interface 🤝
 2. Click **Add Files** ("파일 추가하기 📂") or drag files into the window.
 3. (Optional) Click **Refresh Files** ("파일 새로고침 🔄") to reload the list.
 4. Click **Set Save Path** ("합칠 경로 지정 📌") to pick an output folder.
-5. Click **Merge Files** ("파일 합치기 💖") to generate your combined text file.
-6. Your merged file includes a timestamped header, file structure, and full contents ✨
+5. Click **Delete All Files** ("전체 삭제 🚮") to remove all files from the list.
+6. Click **Merge Files** ("파일 합치기 💖") to generate your combined text file.
+7. Your merged file includes a timestamped header, file structure, and full contents ✨
 
 ## Settings
 
@@ -68,4 +72,3 @@ The merged file consists of:
 ## License
 
 This project is licensed under the MIT License 📝. See [LICENSE](LICENSE) for details.
-
