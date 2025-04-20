@@ -11,7 +11,7 @@ class FileMergerApp:
     def __init__(self, root):
         self.root = root
         self.root.title("파일 합치기 프로그램")
-        self.root.geometry("700x500")
+        self.root.geometry("800x500")
         self.root.configure(bg="#f0f0f0")
         
         # 설정 파일 경로 - 사용자 홈 디렉토리의 특별한 폴더에 저장
@@ -87,6 +87,20 @@ class FileMergerApp:
             padx=10
         )
         set_path_button.pack(side=tk.LEFT, padx=5)
+        
+        # 전체 삭제 버튼
+        delete_all_button = tk.Button(
+            button_frame, 
+            text="전체 삭제 🗑️", 
+            command=self.delete_all_files,
+            bg="#ff6666",
+            fg="white",
+            font=("맑은 고딕", 10),
+            relief=tk.RIDGE,
+            borderwidth=3,
+            padx=10
+        )
+        delete_all_button.pack(side=tk.LEFT, padx=5)
         
         # 파일 합치기 버튼
         merge_button = tk.Button(
@@ -305,6 +319,23 @@ class FileMergerApp:
                 removed_count += 1
         
         self.status_label.config(text=f"{removed_count}개의 파일이 삭제되었어요! ❌")
+    
+    def delete_all_files(self):
+        """추가된 모든 파일을 목록에서 제거합니다."""
+        if not self.file_paths:
+            self.status_label.config(text="삭제할 파일이 없어요! 😅")
+            return
+            
+        # 확인 메시지 표시
+        if messagebox.askyesno("확인", "정말로 모든 파일을 목록에서 삭제할까요?"):
+            # 트리뷰에서 모든 항목 삭제
+            self.tree.delete(*self.tree.get_children())
+            
+            # 파일 경로 목록 초기화
+            file_count = len(self.file_paths)
+            self.file_paths = {}
+            
+            self.status_label.config(text=f"{file_count}개의 파일이 모두 삭제되었어요! 🗑️")
     
     def show_context_menu(self, event):
         """마우스 우클릭 메뉴를 표시합니다."""
