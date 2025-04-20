@@ -22,7 +22,7 @@ Merge multiple files easily with a friendly GUI interface 🤝
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/file-combiner.git
+   git clone https://github.com/wakeisle9933/file-combiner.git
    ```
 2. (Optional) Install `tkinterdnd2` for drag-and-drop:
    ```bash
