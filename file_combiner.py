@@ -11,7 +11,7 @@ class FileMergerApp:
     def __init__(self, root):
         self.root = root
         self.root.title("파일 합치기 프로그램")
-        self.root.geometry("750x500")
+        self.root.geometry("750x550")
         self.root.configure(bg="#f0f0f0")
         
         # 설정 파일 경로 - 사용자 홈 디렉토리의 특별한 폴더에 저장
@@ -129,6 +129,29 @@ class FileMergerApp:
             bg="#f0f0f0"
         )
         files_label.pack(pady=(20, 5), anchor=tk.W)
+
+        # 두 번째 줄 프레임 생성
+        second_row_frame = tk.Frame(main_frame, bg="#f0f0f0")
+        second_row_frame.pack(fill=tk.X, pady=(0, 5))
+        
+        # 체크버튼 변수 추가
+        self.topmost_var = tk.BooleanVar(value=False)
+
+        # 항상 맨 위로 버튼 배치
+        self.topmost_check = tk.Checkbutton(
+            second_row_frame,
+            text="항상 맨 위로 📌",
+            variable=self.topmost_var,
+            command=self.toggle_topmost,
+            bg="#f0f0f0",
+            fg="#CC66FF",
+            selectcolor="white",
+            font=("맑은 고딕", 10, "bold"),
+            activebackground="#f0f0f0",
+            activeforeground="#9933FF",
+            padx=5
+        )
+        self.topmost_check.pack(side=tk.LEFT, padx=5)
         
         # 경로 정보 표시 라벨
         save_path_text = "저장 경로: 아직 지정되지 않았어요"
@@ -136,13 +159,13 @@ class FileMergerApp:
             save_path_text = f"저장 경로: {self.save_path}"
             
         self.path_label = tk.Label(
-            main_frame,
+            second_row_frame,
             text=f"{save_path_text} 📌", 
             font=("맑은 고딕", 9),
             bg="#f0f0f0",
             fg="#666666"
         )
-        self.path_label.pack(anchor=tk.W)
+        self.path_label.pack(side=tk.LEFT, padx=(20, 0))
         
         # 트리뷰와 스크롤바를 감싸는 프레임 만들기!
         tree_frame = tk.Frame(main_frame, bg="#f0f0f0")
@@ -474,6 +497,15 @@ class FileMergerApp:
                 
         except Exception as e:
             messagebox.showerror("오류", f"파일 저장 중 오류가 발생했어요 😢\n{str(e)}")
+            
+    def toggle_topmost(self):
+        """창을 항상 위로 놓거나 해제합니다."""
+        if self.topmost_var.get():  # 체크박스가 체크되었을 때!
+            self.root.attributes('-topmost', True)
+            self.status_label.config(text="창이 항상 맨 위에 고정됐어요! 🔝")
+        else:  # 체크 해제되었을 때~
+            self.root.attributes('-topmost', False)
+            self.status_label.config(text="창 고정이 해제됐어요! 🔄")
 
 if __name__ == "__main__":
     # 디버깅용 출력 추가
