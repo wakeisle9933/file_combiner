@@ -102,6 +102,20 @@ class FileMergerApp:
         )
         merge_button.pack(side=tk.LEFT, padx=5)
         
+        # 전체 삭제 버튼
+        clear_all_button = tk.Button(
+            button_frame, 
+            text="전체 삭제 🗑️", 
+            command=self.clear_all_files,
+            bg="#ff5555",
+            fg="white",
+            font=("맑은 고딕", 10),
+            relief=tk.RIDGE,
+            borderwidth=3,
+            padx=10
+        )
+        clear_all_button.pack(side=tk.LEFT, padx=5)
+        
         # 파일 목록 라벨
         files_label = tk.Label(
             main_frame, 
@@ -317,6 +331,26 @@ class FileMergerApp:
                 # Ctrl 키를 누르고 있는 것처럼 선택을 추가
                 self.tree.selection_add(item)
             self.context_menu.post(event.x_root, event.y_root)
+            
+    def clear_all_files(self):
+        """모든 파일을 목록에서 제거합니다."""
+        if not self.file_paths:
+            self.status_label.config(text="삭제할 파일이 없어요! 😅")
+            return
+            
+        # 확인 메시지
+        confirm = messagebox.askyesno("확인", "모든 파일을 목록에서 제거할까요?")
+        if not confirm:
+            return
+            
+        # 트리뷰 초기화
+        self.tree.delete(*self.tree.get_children())
+        
+        # 파일 경로 딕셔너리 초기화
+        file_count = len(self.file_paths)
+        self.file_paths = {}
+        
+        self.status_label.config(text=f"{file_count}개의 파일이 모두 삭제되었어요! 🗑️")
     
     def drop(self, event):
         """드래그 앤 드롭으로 파일을 추가합니다."""
