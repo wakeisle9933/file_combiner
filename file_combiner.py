@@ -144,30 +144,35 @@ class FileMergerApp:
         )
         self.path_label.pack(anchor=tk.W)
         
+        # 트리뷰와 스크롤바를 감싸는 프레임 만들기!
+        tree_frame = tk.Frame(main_frame, bg="#f0f0f0")
+        tree_frame.pack(fill=tk.BOTH, expand=True, pady=5)
+
         # 파일 목록 표시할 트리뷰 (다중 선택 가능하도록 설정)
         columns = ('filename', 'path', 'size')
-        self.tree = ttk.Treeview(main_frame, columns=columns, show='headings', height=10, selectmode='extended')
-        
+        self.tree = ttk.Treeview(tree_frame, columns=columns, show='headings', height=10, selectmode='extended')
+
         # 스타일 설정
         style = ttk.Style()
         style.configure("Treeview", font=("맑은 고딕", 10))
         style.configure("Treeview.Heading", font=("맑은 고딕", 10, "bold"))
-        
+
         # 헤더 설정
         self.tree.heading('filename', text='파일명')
         self.tree.heading('path', text='경로')
         self.tree.heading('size', text='크기')
-        
+
         # 열 너비 설정
         self.tree.column('filename', width=150)
         self.tree.column('path', width=350)
         self.tree.column('size', width=100)
-        
+
         # 스크롤바 추가
-        scrollbar = ttk.Scrollbar(main_frame, orient=tk.VERTICAL, command=self.tree.yview)
+        scrollbar = ttk.Scrollbar(tree_frame, orient=tk.VERTICAL, command=self.tree.yview)
         self.tree.configure(yscrollcommand=scrollbar.set)
-        
-        self.tree.pack(fill=tk.BOTH, expand=True, pady=5)
+
+        # 스크롤바 위치 지정하기
+        self.tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
         
         # 트리뷰에 우클릭 메뉴 추가
