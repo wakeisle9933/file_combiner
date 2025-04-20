@@ -1,4 +1,5 @@
-<img width="563" alt="file_combiner" src="https://github.com/user-attachments/assets/01e196da-c8fc-4a4f-b0f7-543ef27e56c2" />
+
+<img width="555" alt="file_combiner" src="https://github.com/user-attachments/assets/1f3d7df8-973a-4ff0-99d0-8b44e41cce99" />
 
 # File Combiner
 
