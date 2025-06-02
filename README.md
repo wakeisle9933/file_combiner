@@ -64,6 +64,27 @@ The merged file consists of:
 2. A list of all file paths included 📋
 3. Dividers and full content of each file, in order ✂️
 
+## Building Executable
+
+To create a standalone `.exe` file:
+
+1. Install PyInstaller:
+   ```bash
+   pip install pyinstaller
+   ```
+
+2. Build using the spec file:
+   ```bash
+   pyinstaller file_combiner.spec
+   ```
+
+3. Find the executable in `dist/file_combiner.exe` 🎉
+
+Alternatively, build from scratch:
+```bash
+pyinstaller --onefile --windowed --add-data "tkinterdnd2;tkinterdnd2" --hidden-import tkinterdnd2 file_combiner.py
+```
+
 ## Troubleshooting
 
 - **Read Errors**: Check file permissions or encodings 🔍
