@@ -1,5 +1,5 @@
 
-<img width="555" alt="file_combiner" src="https://github.com/user-attachments/assets/1f3d7df8-973a-4ff0-99d0-8b44e41cce99" />
+<img width="562" height="434" alt="file_combiner_1 3" src="https://github.com/user-attachments/assets/7134930b-f893-477f-b686-9d226ae578e9" />
 
 # File Combiner
 
@@ -73,3 +73,4 @@ The merged file consists of:
 ## License
 
 This project is licensed under the MIT License 📝. See [LICENSE](LICENSE) for details.
+
